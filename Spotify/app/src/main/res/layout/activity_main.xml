@@ -54,6 +54,14 @@
         android:layout_toEndOf="@+id/txtTittle"
         android:layout_marginBottom="54dp" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Song"
+        android:id="@+id/btnStop"
+        android:layout_gravity="right" />
+
 </LinearLayout>
 
 

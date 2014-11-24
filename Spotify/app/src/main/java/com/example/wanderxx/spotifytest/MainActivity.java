@@ -52,16 +52,16 @@ public class MainActivity extends Activity implements
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Uri uri = intent.getData();
-        System.out.println("The system generated uri is " +uri);
+
         if (uri != null) {
             AuthenticationResponse response = SpotifyAuthentication.parseOauthResponse(uri);
             Spotify spotify = new Spotify(response.getAccessToken());
             mPlayer = spotify.getPlayer(this, "My Company Name", this, new Player.InitializationObserver() {
                 @Override
                 public void onInitialized() {
-                //    mPlayer.addConnectionStateCallback(MainActivity.this);
-                //    mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                //    mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                    //    mPlayer.addConnectionStateCallback(MainActivity.this);
+                    //    mPlayer.addPlayerNotificationCallback(MainActivity.this);
+                    //    mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
                 }
 
                 @Override
@@ -70,19 +70,19 @@ public class MainActivity extends Activity implements
                 }
             });
 
-            final Activity thisact=this;
+            final Activity thisact = this;
 
 
             Button btnhappy = (Button) findViewById(R.id.btnHappy);
             btnhappy.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                   // mPlayer.pause();
+                    // mPlayer.pause();
                     mPlayer.addConnectionStateCallback(MainActivity.this);
                     mPlayer.addPlayerNotificationCallback(MainActivity.this);
                     mPlayer.play("spotify:track:6NmXV4o6bmp704aPGyTVVG");
-                    lop=new LongOperation(thisact);
+                    lop = new LongOperation(thisact);
                     lop.execute("spotify:track:6NmXV4o6bmp704aPGyTVVG");
-                 //   ShowMeta("spotify:track:6NmXV4o6bmp704aPGyTVVG");
+                    //   ShowMeta("spotify:track:6NmXV4o6bmp704aPGyTVVG");
 
                 }
             });
@@ -90,18 +90,28 @@ public class MainActivity extends Activity implements
             Button btnsad = (Button) findViewById(R.id.btnSad);
             btnsad.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                   // mPlayer.pause();
+                    // mPlayer.pause();
                     mPlayer.addConnectionStateCallback(MainActivity.this);
                     mPlayer.addPlayerNotificationCallback(MainActivity.this);
                     mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                    lop=new LongOperation(thisact);
+                    lop = new LongOperation(thisact);
                     lop.execute("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
-                   // ShowMeta("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                    // ShowMeta("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
 
                 }
             });
 
+            Button btnstp = (Button) findViewById(R.id.btnStop);
+            btnstp.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // mPlayer.pause();
+                    mPlayer.addConnectionStateCallback(MainActivity.this);
+                    mPlayer.addPlayerNotificationCallback(MainActivity.this);
+                    mPlayer.pause();
+                }
+            });
         }
+
     }
 
     @Override
